@@ -46,7 +46,7 @@ Jei jwt_refresh_token nustojęs galioti arba jeigu yra bogas vartotojui gražina
 
 4. /getAllUsers  (tik prisijungusiems vartotojams)
 Grąžina visus vartotojus. Vartotojai išrikiuojami pagal vardą abecelės tvarka.
-
++
 
 5. /getUserById (tik prisijungusiems vartotojams)
 Neradus tokio vartotojo gražinamas 404 http statusas.

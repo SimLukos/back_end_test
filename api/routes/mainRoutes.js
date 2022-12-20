@@ -11,6 +11,6 @@ const {
 router.post("/signUp", SIGN_UP);
 router.post("/login", LOGIN);
 router.post("/getNewJwtToken", NEW_TOKEN);
-router.post("/getAllUsers", auth, GET_ALL_USERS);
+router.get("/getAllUsers", auth, GET_ALL_USERS);
 
 module.exports = router;
