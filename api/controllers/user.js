@@ -137,7 +137,7 @@ module.exports.NEW_TOKEN = (req, res) => {
 
 module.exports.GET_ALL_USERS = async (req, res) => {
   try {
-    const allUsers = await UserSchema.find();
+    const allUsers = await UserSchema.find().sort({ name: "ASC" });
 
     return res.status(200).json({ allUsers: allUsers });
   } catch (error) {
