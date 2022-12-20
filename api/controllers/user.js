@@ -172,3 +172,19 @@ module.exports.GET_ALL_WITH_TICKETS = async (req, res) => {
 
   res.status(200).json({ allUsersWithTickets: allWithTickets });
 };
+
+module.exports.GET_USER_BY_ID_WITH_TICKETS = async (req, res) => {
+  const user = await UserSchema.aggregate([
+    {
+      $lookup: {
+        from: "tickets",
+        localField: "bought_tickets",
+        foreignField: "_id",
+        as: "user_tickets",
+      },
+    },
+    { $match: { _id: ObjectId(req.body.id) } },
+  ]).exec();
+
+  res.status(200).json({ user: user });
+};
