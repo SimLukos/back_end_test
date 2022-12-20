@@ -144,3 +144,17 @@ module.exports.GET_ALL_USERS = async (req, res) => {
     console.log(error);
   }
 };
+
+module.exports.GET_USER_BY_ID = async (req, res) => {
+  try {
+    const userById = await UserSchema.findById(req.body.id);
+
+    if (userById != null) {
+      res.status(200).json({ searchedUser: userById });
+    } else {
+      res.status(404).json({ Message: "User not found. Please check id." });
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
