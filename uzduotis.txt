@@ -50,6 +50,7 @@ Grąžina visus vartotojus. Vartotojai išrikiuojami pagal vardą abecelės tvar
 
 5. /getUserById (tik prisijungusiems vartotojams)
 Neradus tokio vartotojo gražinamas 404 http statusas.
++
 
 
 6. /buyTicket (tik prisijungusiems vartotojams)
