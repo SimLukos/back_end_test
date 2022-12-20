@@ -1,6 +1,9 @@
 const UserSchema = require("../models/userMod");
+const TicketSchema = require("../models/ticketMod");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+
+const ObjectId = require("mongoose").Types.ObjectId;
 
 // function to capitalize first letter for name
 function capitalize(str) {
@@ -149,12 +152,23 @@ module.exports.GET_USER_BY_ID = async (req, res) => {
   try {
     const userById = await UserSchema.findById(req.body.id);
 
-    if (userById != null) {
-      res.status(200).json({ searchedUser: userById });
-    } else {
-      res.status(404).json({ Message: "User not found. Please check id." });
-    }
-  } catch (error) {
-    console.log(error);
+    res.status(200).json({ searchedUser: userById });
+  } catch {
+    res.status(404).json({ Message: "User not found. Please check id." });
   }
+};
+
+module.exports.GET_ALL_WITH_TICKETS = async (req, res) => {
+  const allWithTickets = await UserSchema.aggregate([
+    {
+      $lookup: {
+        from: "tickets",
+        localField: "bought_tickets",
+        foreignField: "_id",
+        as: "user_tickets",
+      },
+    },
+  ]).exec();
+
+  res.status(200).json({ allUsersWithTickets: allWithTickets });
 };

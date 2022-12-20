@@ -1,6 +1,6 @@
 const TicketSchema = require("../models/ticketMod");
 const UserSchema = require("../models/userMod");
-const jwt = require("jsonwebtoken");
+const ObjectId = require("mongoose").Types.ObjectId;
 
 module.exports.CREATE_TICKET = (req, res) => {
   const ticket = new TicketSchema({
@@ -29,7 +29,10 @@ module.exports.BUY_TICKET = async (req, res) => {
 
     UserSchema.updateOne(
       { _id: userId },
-      { money_balance: newBalance, $push: { bought_tickets: ticketId } }
+      {
+        money_balance: newBalance,
+        $push: { bought_tickets: ObjectId(ticketId) },
+      }
     ).then(() => {
       return res.status(200).json({ Message: "Ticket was bought." });
     });

@@ -60,11 +60,11 @@ Jei vartotojui nepakanka pinigų sąskaitos balanse gražinamas 400 http statusa
 Sėkmingai įvykstant pirkimui:
 Prie Userio bought_tickets masyvo yra pridedamas _id(ticket);
 Iš vartotojo money_balance atimama ticket_price;
-
++
 
 7. /getAllUsersWithTickets (tik prisijungusiems vartotojams)
 Grąžinti visus vartotojus su agergutais bought_tickets duomenimis. (naudoti lookup)
-
++
 
 8. /getUserByIdWithTickets (tik prisijungusiems vartotojams)
 Grąžinti vartotoją pagal id su agergutais bought_tickets duomenimis. (naudoti lookup)
