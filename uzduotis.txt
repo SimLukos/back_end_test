@@ -68,4 +68,4 @@ Grąžinti visus vartotojus su agergutais bought_tickets duomenimis. (naudoti lo
 
 8. /getUserByIdWithTickets (tik prisijungusiems vartotojams)
 Grąžinti vartotoją pagal id su agergutais bought_tickets duomenimis. (naudoti lookup)
-
++
