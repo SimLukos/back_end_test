@@ -6,6 +6,7 @@ const ticketSchema = mongoose.Schema({
   from_location: { type: String, required: true },
   to_location: { type: String, required: true },
   to_location_photo_url: { type: String, required: true },
+  id: { type: String, required: false },
 });
 
 module.exports = mongoose.model("Ticket", ticketSchema);

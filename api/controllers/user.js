@@ -161,10 +161,15 @@ module.exports.GET_USER_BY_ID = async (req, res) => {
 module.exports.GET_ALL_WITH_TICKETS = async (req, res) => {
   const allWithTickets = await UserSchema.aggregate([
     {
+      //kad mestu tik turincius bilietus
+      $match: { bought_tickets: { $exists: true, $not: { $size: 0 } } },
+    },
+
+    {
       $lookup: {
         from: "tickets",
         localField: "bought_tickets",
-        foreignField: "_id",
+        foreignField: "id",
         as: "user_tickets",
       },
     },
@@ -179,7 +184,7 @@ module.exports.GET_USER_BY_ID_WITH_TICKETS = async (req, res) => {
       $lookup: {
         from: "tickets",
         localField: "bought_tickets",
-        foreignField: "_id",
+        foreignField: "id",
         as: "user_tickets",
       },
     },
