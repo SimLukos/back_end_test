@@ -2,8 +2,6 @@ const TicketSchema = require("../models/ticketMod");
 const UserSchema = require("../models/userMod");
 const ObjectId = require("mongoose").Types.ObjectId;
 
-module.exports.CREATE_TICKET = (req, res) => {};
-
 module.exports.BUY_TICKET = async (req, res) => {
   const ticket = new TicketSchema({
     ticket_price: req.body.ticket_price,
